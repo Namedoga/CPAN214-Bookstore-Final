@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Welcome to Our Bookstore</h2>
+    <p>Group members: [Your Name] & [Partner Name]</p>
+
+    <h3>Available Books</h3>
+
+    {% if books %}
+        <ul>
+            {% for book in books %}
+                <li>
+                    <a href="{% url 'book_detail' book.id %}">
+                        {{ book.title }} – {{ book.author }} ({{ book.year }})
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No books found.</p>
+    {% endif %}
+{% endblock %}
