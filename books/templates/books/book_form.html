@@ -8,30 +8,39 @@
     {% endif %}
 
     {% if error %}
-        <p style="color: red;">{{ error }}</p>
+        <p style="color:red;">{{ error }}</p>
     {% endif %}
 
     <form method="post">
         {% csrf_token %}
 
+        <!-- TITLE -->
         <label>Title:</label>
         <input type="text" name="title"
-               value="{{ book.title|default:title|default:'' }}" required>
+               value="{% if book %}{{ book.title }}{% endif %}"
+               required><br><br>
 
+        <!-- AUTHOR -->
         <label>Author:</label>
         <input type="text" name="author"
-               value="{{ book.author|default:author|default:'' }}" required>
+               value="{% if book %}{{ book.author }}{% endif %}"
+               required><br><br>
 
+        <!-- YEAR -->
         <label>Year:</label>
         <input type="number" name="year"
-               value="{{ book.year|default:year|default:'' }}" required>
+               value="{% if book %}{{ book.year }}{% endif %}"
+               required><br><br>
 
+        <!-- RATING -->
         <label>Rating:</label>
         <input type="number" step="0.1" name="rating"
-               value="{{ book.rating|default:rating|default:'' }}" required>
+               value="{% if book %}{{ book.rating }}{% endif %}"
+               required><br><br>
 
+        <!-- DESCRIPTION -->
         <label>Description:</label>
-        <textarea name="description" rows="4" required>{{ book.description|default:description|default:'' }}</textarea>
+        <textarea name="description" rows="4" required>{% if book %}{{ book.description }}{% endif %}</textarea><br><br>
 
         <button type="submit">
             {% if form_mode == "add" %}
@@ -42,5 +51,6 @@
         </button>
     </form>
 
-    <p><a href="{% url 'home' %}">Back to Home</a></p>
+    <br>
+    <a href="{% url 'home' %}">Back to Home</a>
 {% endblock %}

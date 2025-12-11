@@ -1,0 +1,91 @@
+/* Root colors */
+:root {
+    --bg: #f9f4ef;           
+    --fg: #5a4632;          
+    --accent: #c9a66b;       
+    --accent-dark: #a07c45;  
+    --card-bg: #fffaf2;      
+}
+
+/* Global styling */
+body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: "Georgia", serif;
+    margin: 40px auto;
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Navbar */
+nav {
+    background: var(--accent);
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+}
+
+nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--fg);
+}
+
+nav a:hover {
+    color: var(--accent-dark);
+}
+
+/* Headings */
+h1, h2 {
+    color: var(--accent-dark);
+    margin-bottom: 10px;
+}
+
+/* Book Cards */
+.book-card {
+    background: var(--card-bg);
+    padding: 15px;
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Forms */
+label {
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    background-color: #fff7e6;
+}
+
+button {
+    background-color: var(--accent-dark);
+    color: var(--bg);
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--accent);
+}
+
+/* Links */
+a {
+    color: var(--accent-dark);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
