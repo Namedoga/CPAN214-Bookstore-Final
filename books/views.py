@@ -20,6 +20,7 @@ def add_book(request):
         rating = request.POST.get("rating")
         description = request.POST.get("description")
 
+       
         if not title or not author or not year or not rating or not description:
             return render(
                 request,
@@ -39,8 +40,6 @@ def add_book(request):
         )
         return redirect("home")
 
-   
-    return render(request, "books/book_form.html", {"form_mode": "add"})
     
 
 def edit_book(request, book_id):
@@ -65,4 +64,30 @@ def edit_book(request, book_id):
             )
 
         book.title = title
-        book.author =
+        book.author = author
+        book.year = int(year)
+        book.rating = float(rating)
+        book.description = description
+        book.save()
+        return redirect("book_detail", book_id=book.id)
+
+    
+    return render(
+        request,
+        "books/book_form.html",
+        {
+            "form_mode": "edit",
+            "book": book,
+        },
+    )
+
+
+def delete_book(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+
+    if request.method == "POST":
+        book.delete()
+        return redirect("home")
+
+    return render(request, "books/book_confirm_delete.html", {"book": book})
+
