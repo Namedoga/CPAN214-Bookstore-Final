@@ -78,7 +78,7 @@ def edit_book(request, book_id):
         book.description = description
         book.save()
 
-        return redirect("books/book_detail", book_id=book.id)
+        return redirect("book_detail", book_id=book.id)
 
     return render(request, "books/book_form.html", {"form_mode": "edit", "book": book})
 
